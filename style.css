@@ -1,0 +1,41 @@
+h1{
+	display: block;
+	position: relative;
+	width: 25%;
+	margin: 0 auto;
+	text-align: center;
+}
+.blocks{
+	position: relative;
+    display: inline-block;
+    width: 397px;
+    height: 353px;
+    border: 8px solid black;
+}
+
+label{
+	position: relative;
+	display: block;
+	font-size: 20px;
+	font-family: Times;
+	margin: 0 auto;
+	width: 300px;
+	text-align: center;
+}
+
+input{
+	display: block ;
+	position: relative;
+
+}
+
+ input:last-child{
+ 	width: 300px;
+	display: block;
+	position: relative;
+	margin: 0 auto;
+}
+
+img{
+	margin-left: 50px;
+}

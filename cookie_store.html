@@ -2,60 +2,86 @@
 <html>
 <head>
 	<title>The Cookie Store</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
 <div>
 	<h1>Welcome To The Store!</h1>
 	<h2>Select the delicious cookies <em>NOTE ONLY 1 COOKIE PER ADD</em></h2>
 	<form id= "form" action="cookie_logout.html" method="get">
-		<label>Chocolate Chip Cookies</label>
-		<input type="button" name = "add to cart" id= "chocolate" value="add to cart">
-		<label>Sugar Cookies</label>
-		<input	type="button" name="add to cart" id="sugar" value="add to cart">
-		<label>Lemon Cookies</label>
-		<input type="button" name="add to cart" id = "lemon" value="add to cart">
-		<label>Proceed to checkout?</label>
-		<input type="submit" name="checkout" >
+
+		<div class = "blocks">
+			<label>Chocolate Chip Cookies</label>
+			<!-- Taken from: theeee internet -->
+			<img  src="http://quickrecipes.pw/wp-content/uploads/2014/09/download-wallpaper-chocolate-chip-cookies-free-download-wallpaper.jpg" width="300px" height="300px">
+			<input type="button" name = "add to cart" id= "chocolate" value="add to cart">
+		</div>
+
+		<div class = "blocks">
+			<label>Sugar Cookies</label>
+			<!-- Taken from google's static fliker -->
+			<img src="http://farm6.static.flickr.com/5011/5558831541_c36bd979ae.jpg" alt="Lemon Sugar Cookies - 5" width="300px" height="300px">
+			<input	type="button" name="add to cart" id="sugar" value="add to cart">
+		</div>
+		<div class = "blocks">
+			<label>Lemon Cookies</label>
+			<!-- Taken from the slopes of the aegian sea -->
+			<img src="http://www.recipeshubs.com/thumbs/2331770-lemon-cookies-with-lemon-icing.jpg" width="300px" height="300px" title="Lemon Cookies with Lemon Icing" alt="Lemon Cookies with Lemon Icing">
+			<input type="button" name="add to cart" id = "lemon" value="add to cart">
+			</div>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<label>Proceed to checkout?</label>
+			<input type="submit" name="checkout" >
 	</form>
 </div>
 
-<a href="/cookie_logout.html">Checkout?</a>
+<a href="cookie_logout.html">Checkout?</a>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 <script src="cookies.js"></script>
-<script type="text/javascript">
-	$(document).ready(function(){
-			var increment_c = 0;
-			$("#chocolate").on("click",function(){
-					counter = increment_c + 1;
-					console.log(counter);
-					var CookieAmount = Cookies.set("Chocolate Chip", counter);
-					increment_c = counter;
-				});
-			var increment_s = 0;
-			$('#sugar').on("click", function(){
-				var counter = increment_s +1;
-				console.log(counter);
-				var CookieAmount = Cookies.set("Sugar", counter);
-				increment_s = counter;
-			});
-			var increment_l = 0;
-			$('#lemon').on('click', function(){
-				counter = increment_l + 1;
-				console.log(counter);
-				var CookieAmount = Cookies.set("Lemon", counter);
-				increment_l = counter;
-			});
-		        
-			$('#form').on('submit', function(){
-				var printl = Cookies.get("Lemon");
-				var prints = Cookies.get("Sugar")
-				var printc = Cookies.get("Chocolate Chip"); 
-				console.log(printl, prints, printc);
 
+<script type="text/javascript">
+if (Cookies.get("Chocolate Chip") == 0) {var increment_c = 0}
+	else var increment_c = Number(Cookies.get("Chocolate Chip"));
+if (Cookies.get("Sugar") == 0) {var increment_s = 0}
+	else var increment_s = Number(Cookies.get("Sugar"));
+if (Cookies.get("Lemon") == 0) {var increment_l = 0}
+	else var increment_l = Number(Cookies.get("Lemon"));
+
+$(document).ready(function(){
+	
+		$("#chocolate").on("click",function(){
+				counter = increment_c + 1;
+				console.log(counter);
+				var CookieAmountC = Cookies.set("Chocolate Chip", counter);
+				increment_c = counter;
 			});
+
+		$('#sugar').on("click", function(){
+			counter = increment_s + 1;
+			console.log(counter);
+			var CookieAmountS = Cookies.set("Sugar", counter);
+			increment_s = counter;
+		});
+		$('#lemon').on('click', function(){
+			counter = increment_l + 1;
+			console.log(counter);
+			var CookieAmountL = Cookies.set("Lemon", counter);
+			increment_l = counter;
+		});
+		$('#form').on('submit', function(){
+			var printl = Cookies.get("Lemon");
+			var prints = Cookies.get("Sugar")
+			var printc = Cookies.get("Chocolate Chip"); 
+			console.log(printl, prints, printc);
 
 		});
+
+	});
 </script>
 </body>
 </html>

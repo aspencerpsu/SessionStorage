@@ -22,7 +22,7 @@
 	</div>
 </div>
 
-<a href="/cookie_store.html">Return Shopping?</a>
+<a href="cookie_store.html">Return Shopping?</a>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 <script src="cookies.js"></script>
@@ -30,24 +30,38 @@
 	$(document).ready(function(){
 
 		if (Cookies.get("Lemon") != 0) {
-			$('#lemons').append("<h1>" + "Lemon" + "</h1>");
-		$('#lemons').append("<li>" + Cookies.get("Lemon") + "</li>");
+			var p = $('#lemons').append("<h1>" + "Lemon" + "</h1>");
+			var p = $('#lemons').append("<li class=\"del\">" + Cookies.get("Lemon") + "</li>");
+		}
+		else {
+			$('#lemons').append("<h1>" + "Lemon" + "</h1");
 		};
 		if (Cookies.get("Chocolate Chip") != 0) {
-			$("#chocolates").append("<h1>" + "Chocolate Chip" + "</h1>");
-			$("#chocolates").append("<li>" + Cookies.get("Chocolate Chip") + "</li>");
+			var p = $("#chocolates").append("<h1>" + "Chocolate Chip" + "</h1>");
+			var p = $("#chocolates").append("<li class = \"del\">" + Cookies.get("Chocolate Chip") + "</li>");
 
+		}
+		else {
+			$('#chocolates').append("<h1>" + "Chocolate Chip" + "</h1>");
 		};
 		if (Cookies.get("Sugar") != 0) {
+			var p =$("#sugars").append("<h1>" + "Sugar" + "</h1>");
+			var p =$("#sugars").append("<li class = \"del\">" + Cookies.get("Sugar") + "</li>");
+		}
+		else {
 			$("#sugars").append("<h1>" + "Sugar" + "</h1>");
-			$("#sugars").append("<li>" + Cookies.get("Sugar") + "</li>");
-
 		};
 		$("#form2").on("submit", function(e){
 			e.preventDefault();
 			Cookies.set("Chocolate Chip", 0);
 			Cookies.set("Lemon", 0);
 			Cookies.set("Sugar", 0);
+
+			$('#lemons').append('<li>' + Cookies.get("Lemon") + '</li>')
+			$('#sugars').append('<li>' + Cookies.get("Sugar") + '</li>')
+			$('#chocolates').append('<li>' + Cookies.get("Chocolate Chip") + '</li>')
+			$('.del').remove();
+			$('input:submit').attr('disabled', 'disabled')
 		});
 	});
 
