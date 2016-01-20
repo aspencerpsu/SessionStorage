@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Cookie Totals</title>
+</head>
+<body>
+
+<div id="cookies">
+	<h1>Your Cookies for each:</h1>
+	<div id = "lemons">
+	</div>
+	<div id = "sugars">
+	</div>
+	<div id = "chocolates">
+	</div>
+
+	<form id="form2" action = "cookie_store.html" method="get">
+		<label>Clear The Shopping Cart?</label>
+		<input type ="submit" value="yes">
+	</form>
+		
+	</div>
+</div>
+
+<a href="/cookie_store.html">Return Shopping?</a>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<script src="cookies.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		if (Cookies.get("Lemon") !== 0) {
+			$('#lemons').append("<h1>" + "Lemon" + "</h1>");
+		$('#lemons').append("<li>" + Cookies.get("Lemon") + "</li>");
+		};
+		if (Cookies.get("Chocolate Chip") !== 0) {
+			$("#chocolates").append("<h1>" + "Chocolate Chip" + "</h1>");
+			$("#chocolates").append("<li>" + Cookies.get("Chocolate Chip") + "</li>");
+
+		};
+		if (Cookies.get("Sugar") !== 0) {
+			$("#sugars").append("<h1>" + "Sugar" + "</h1>");
+			$("#sugars").append("<li>" + Cookies.get("Sugar") + "</li>");
+
+		};
+		$("#form2").on("submit", function(){
+			Cookies.set("Chocolate Chip", 0);
+			Cookies.set("Lemon", 0);
+			Cookies.set("Sugar", 0);
+		});
+	});
+
+</script>
+</body>
+</html>

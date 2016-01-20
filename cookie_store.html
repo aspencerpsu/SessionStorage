@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>The Cookie Store</title>
+</head>
+<body>
+<div>
+	<h1>Welcome To The Store!</h1>
+	<h2>Select the delicious cookies <em>NOTE ONLY 1 COOKIE PER LOGOUT</em></h2>
+	<form id= "form" action="cookie_logout.html" method="get">
+		<label>Chocolate Chip Cookies</label>
+		<input type="button" name = "add to cart" id= "chocolate" value="add to cart">
+		<label>Sugar Cookies</label>
+		<input	type="button" name="add to cart" id="sugar" value="add to cart">
+		<label>Lemon Cookies</label>
+		<input type="button" name="add to cart" id = "lemon" value="add to cart">
+		<label>Proceed to checkout?</label>
+		<input type="submit" name="checkout" >
+	</form>
+</div>
+
+<a href="/cookie_logout.html">Checkout?</a>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<script src="cookies.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+			var increment_c = 0;
+			$("#chocolate").on("click",function(){
+					counter = increment_c + 1;
+					console.log(counter);
+					var CookieAmount = Cookies.set("Chocolate Chip", counter);
+					increment_c = counter;
+				});
+			var increment_s = 0;
+			$('#sugar').on("click", function(){
+				var counter = increment_s +1;
+				console.log(counter);
+				var CookieAmount = Cookies.set("Sugar", counter);
+				increment_s = counter;
+			});
+			var increment_l = 0;
+			$('#lemon').on('click', function(){
+				counter = increment_l + 1;
+				console.log(counter);
+				var CookieAmount = Cookies.set("Lemon", counter);
+				increment_l = counter;
+			});
+		        
+			$('#form').on('submit', function(){
+				var printl = Cookies.get("Lemon");
+				var prints = Cookies.get("Sugar")
+				var printc = Cookies.get("Chocolate Chip"); 
+				console.log(printl, prints, printc);
+
+			});
+
+		});
+</script>
+</body>
+</html>
