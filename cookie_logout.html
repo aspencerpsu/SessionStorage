@@ -24,8 +24,23 @@
 
 <a href="cookie_store.html">Return Shopping?</a>
 
+
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 <script src="cookies.js"></script>
+<script src="js/jquery.cookies.2.2.0.js" type="text/javascript"></script>
+<script src="js/jquery.Storage.js" type="text/javascript">
+
+
+var is_chrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
+
+
+//get cookies
+var myCookie=(is_chrome)?$.Storage.get("helpFlag"):$.cookies.get("helpFlag");
+
+//set cookies
+if(is_chrome)$.Storage.set("helpFlag", "1");else $.cookies.set("helpFlag", "1");
+</script>
 <script type="text/javascript">
 	$(document).ready(function(){
 
